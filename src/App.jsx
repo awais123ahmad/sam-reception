@@ -35,6 +35,8 @@ function App() {
   return (
     <>
       <Toaster position="top-center" /> {/* Add Toaster here */}
+      <BrowserRouter basename="/reception">
+
       <PortalLayout>
         <Routes>
           <Route path="/" element={<LoginPage />} />
@@ -44,6 +46,7 @@ function App() {
           <Route path="/reception/patientdashboard" element={<PatientDashboard />} />
         </Routes>
       </PortalLayout>
+      </BrowserRouter>
     </>
   );
 }
