@@ -36,6 +36,7 @@ function App() {
     <>
       <Toaster position="top-center" /> {/* Add Toaster here */}
       
+      <BrowserRouter basename="/receptionist">
 
       <PortalLayout>
         <Routes>
@@ -46,6 +47,7 @@ function App() {
           <Route path="/reception/patientdashboard" element={<PatientDashboard />} />
         </Routes>
       </PortalLayout>
+      </BrowserRouter>
     </>
   );
 }
