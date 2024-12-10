@@ -2,6 +2,7 @@
   "name": "receptionist-samhospital",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/receptionist",
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
@@ -55,6 +56,5 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.4.14"
-  },
-  "homepage": "/receptionist"
+  }
 }
