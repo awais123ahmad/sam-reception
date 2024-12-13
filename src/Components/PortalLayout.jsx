@@ -8,21 +8,24 @@ import CssBaseline from "@mui/material/CssBaseline";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../assets/logo.png";
-
 import { Popover, Transition } from "@headlessui/react";
 
 import { useLocation, useNavigate } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-
 import Inventory2Icon from "@mui/icons-material/Inventory2";
 
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import {
-  SESSION_IS_AUTHENTICATED,
-  SESSION_USERINFO,
-} from "../Utills/Constants";
+
+import toast from "react-hot-toast";
+import Cookies from 'js-cookie';
+
+// import {
+//   SESSION_IS_AUTHENTICATED,
+//   SESSION_USERINFO,
+// } from "../Utills/Constants";
+
 import { People } from "@mui/icons-material";
 //import { useDispatch } from "react-redux";
 
@@ -128,26 +131,33 @@ export default function PortalLayout({ children }) {
     setOpen1(op);
   };
 
-  const [auth, setAuth] = useState(
-    sessionStorage.getItem(SESSION_IS_AUTHENTICATED)
-  );
-  console.log(auth);
+  // const [auth, setAuth] = useState(
+  //   sessionStorage.getItem(SESSION_IS_AUTHENTICATED)
+  // );
+  // console.log(auth);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (auth === "false") {
-      route("/login");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (auth === "false") {
+  //     route("/login");
+  //   }
+  // }, []);
+
+  // const handleLogout = () => {
+  //   // Clear session storage
+  //   sessionStorage.removeItem(SESSION_IS_AUTHENTICATED);
+  //   sessionStorage.removeItem(SESSION_USERINFO);
+
+  //   // Navigate to the login page
+  //   navigate("/");
+  // };
 
   const handleLogout = () => {
-    // Clear session storage
-    sessionStorage.removeItem(SESSION_IS_AUTHENTICATED);
-    sessionStorage.removeItem(SESSION_USERINFO);
-
-    // Navigate to the login page
-    navigate("/");
-  };
+    localStorage.removeItem('user')
+    Cookies.remove('XIOQUNVU1RPTUVSLUFVVEhFTlRJQ0FUSU9OIMSLQ1JFVC1LRVk=')
+    toast.success("Logout Successfully")
+    navigate('/login', { replace: true });
+  }
 
   const [userEmail, setUserEmail] = useState("");
 
@@ -159,11 +169,11 @@ export default function PortalLayout({ children }) {
   }, []);
 
   //const dispatch = useDispatch();
-  console.log("user info", sessionStorage.getItem(SESSION_USERINFO));
+  //console.log("user info", sessionStorage.getItem(SESSION_USERINFO));
 
   return (
     <>
-      {location.pathname === "/" ? (
+      {location.pathname === "/login" ? (
         children
       ) : (
         <>
@@ -262,7 +272,7 @@ export default function PortalLayout({ children }) {
                   src={logo}
                   alt=""
                   className={`${
-                    open ? "w-[5rem]" : "w-[3rem]"
+                    open ? "w-[6rem]" : "w-[3rem]"
                   }  ml-auto mr-auto my-4`}
                 />
               </div>
@@ -271,13 +281,12 @@ export default function PortalLayout({ children }) {
                              
                 <ul className={`w-[100%]`}>
 
-
                   <li>
                     <div
-                      onClick={() => route("/reception/patients")}
+                      onClick={() => route("/receptionist")}
                       className={`flex items-center p-2 cursor-pointer  text-gray-600 mt-3 h-[2.6rem] ${
-                        location.pathname === "/reception/patients" ||
-                        location.pathname === "/reception/patients/add"
+                        location.pathname === "/receptionist" ||
+                        location.pathname === "/receptionist/add"
                           ? "bg-gray-800 text-white mr-2 rounded-md font-[600]"
                           : " mr-2 rounded-md"
                       }  ${open ? "ml-6" : "ml-0"}  `}
@@ -286,13 +295,13 @@ export default function PortalLayout({ children }) {
                         className={`!text-5xl ${
                           open ? "mr-4" : "mr-auto ml-2 hover:!text-[3.5rem]"
                         } rounded-full p-[12px] ml-[-1.2rem] ${
-                          location.pathname === "/reception/patients"
+                          location.pathname === "/receptionist"
                             ? "bg-white text-gray-600"
                             : ""
                         } `}
                         sx={{
                           boxShadow:
-                            location.pathname === "/reception/patients"
+                            location.pathname === "/receptionist"
                               ? "2px 5px 10px rgba(0, 0, 0, 0.2)"
                               : "",
                         }}

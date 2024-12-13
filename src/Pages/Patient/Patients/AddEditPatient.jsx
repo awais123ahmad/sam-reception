@@ -70,7 +70,7 @@ const AddEditPatient = () => {
   //       await patientService.createpr(patientData);
   //       toast.success("Patient added successfully!");
   //     }
-  //     navigate("/reception/patients");
+  //     navigate("/receptionist/patients");
   //   } catch (error) {
   //     toast.error("Error saving patient.");
   //   }
@@ -86,7 +86,7 @@ const AddEditPatient = () => {
         await patientService.create(patientData);
         toast.success("Patient added successfully!"); // Success message
       }
-      navigate("/reception/patients"); // Redirect after submission
+      navigate("/receptionist/patients"); // Redirect after submission
     } catch (error) {
       toast.error("Error saving patient."); // Error message
     }

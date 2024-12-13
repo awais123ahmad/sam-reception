@@ -115,7 +115,7 @@ const formatDate = (dateString) => {
                     <span className="font-[400]">{patient?.address}</span>
                   </td>
                   <td className="py-[2%] w-[10%] text-center">
-                    <Link to={`/reception/patients/${patient.patient_id}`}>
+                    <Link to={`/receptionist/${patient.patient_id}`}>
                       <button className="text-[13px] font-[500] text-blue-500">View</button>
                     </Link>
                   </td>
